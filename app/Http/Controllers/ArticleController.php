@@ -88,8 +88,10 @@ class ArticleController extends Controller
             'title' => 'required',
             'description' => 'required',
         ]);
+        
+        Article::find($id)->update($request->all());
 
-        Article::find($id)->update('article.index')
+        return redirect()->route('article.index')
             ->with('success', 'Artigo atualizado com sucesso');
     }
 
